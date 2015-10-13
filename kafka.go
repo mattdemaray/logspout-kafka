@@ -26,6 +26,11 @@ type KafkaAdapter struct {
 	tmpl     *template.Template
 }
 
+func Split(s string, d string) []string {
+    arr := strings.Split(s, d)
+    return arr
+}
+
 func NewKafkaAdapter(route *router.Route) (router.LogAdapter, error) {
 	brokers := readBrokers(route.Address)
 	if len(brokers) == 0 {
