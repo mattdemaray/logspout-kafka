@@ -49,6 +49,7 @@ func NewKafkaAdapter(route *router.Route) (router.LogAdapter, error) {
 		tplFuncMap["Split"] = Split
 		tmpl, err = template.New("kafka").Funcs(tplFuncMap).Parse(text)
 		if err != nil {
+		        log.Printf("Couldn't parse Kafka message template. %v", err)
 			return nil, errorf("Couldn't parse Kafka message template. %v", err)
 		}
 	}
