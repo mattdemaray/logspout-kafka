@@ -40,7 +40,7 @@ func NewKafkaAdapter(route *router.Route) (router.LogAdapter, error) {
 	var err error
 	var tmpl *template.Template
 	if text := os.Getenv("KAFKA_TEMPLATE"); text != "" {
-		tplFuncMap =  make(template.FuncMap)
+		var tplFuncMap :=  make(template.FuncMap)
 		tplFuncMap["Split"] = Split
 		tmpl, err = template.New("kafka").Funcs(tplFuncMap).Parse(text)
 		if err != nil {
